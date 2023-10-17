@@ -1,2 +1,2 @@
-# FItFlow
+# FitFlow
 FYP Fitness App 
