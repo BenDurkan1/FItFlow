@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">FirebaseApp</string>
+    <string name="my_map_api_key">AIzaSyA7fT5T29vvsKD2xIu29oLM6mQgQHECCp0</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="default_web_client_id" translatable="false">YOUR_WEB_CLIENT_ID</string>
+
+    <string name="side_plank">
+        Benefits of Plank \n1) Helps improve your posture. \n2) Helps develop a strong and stable core.\n3)Reduces the risk of lower back pain.
+    </string>
+
+    <string name="Lunges">
+    Benefits of Lunges \n1) Helps improve your posture. \n2) Helps develop a strong and stable core.\n3)Reduces the risk of lower back pain.
+</string>
+
+    <string name="stepping">
+        Benefits of Stepping \n1) Helps improve your posture. \n2) Helps develop a strong and stable core.\n3)Reduces the risk of lower back pain.
+
+    </string>
+
+    <string name="abs_crunching">
+        Benefits of Crunches \n1) Helps improve your posture. \n2) Helps develop a strong and stable core.\n3)Reduces the risk of lower back pain.
+
+    </string>
+
+    <string name="push_ups">
+        Benefits of Push ups \n1) Helps improve your posture. \n2) Helps develop a strong and stable core.\n3)Reduces the risk of lower back pain.
+
+    </string>
+
+
+</resources>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightBlue"
+    tools:context=".Path">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp"
+        android:text = "FitFlow"
+        android:id="@+id/FitFlow"
+        android:textAlignment="center"
+        android:layout_marginTop="100dp"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Paths"
+        android:textSize="18sp"
+        android:id ="@+id/Paths"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:padding="10dp"
+        android:layout_below="@id/FitFlow" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Paths"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="20dp"
+        >
+
+        
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight ="1"
+            android:id = "@+id/liftExercise"
+            android:orientation="vertical"
+            android:layout_margin="4dp"
+            >
+            <com.airbnb.lottie.LottieAnimationView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                android:id="@+id/idLift"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                 android:text= "Strength"
+                android:textAlignment="center"
+                android:padding="8dp"
+                android:layout_gravity="center"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight ="1"
+            android:id = "@+id/cardioExercise"
+            android:orientation="vertical"
+            android:layout_margin="4dp"
+            >
+            <com.airbnb.lottie.LottieAnimationView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                android:id="@+id/idCardio"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text= "Cardio"
+                android:textAlignment="center"
+                android:padding="8dp"
+                android:layout_gravity="center"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+    </RelativeLayout>
