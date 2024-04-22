@@ -47,7 +47,10 @@ public class SavedExercisesActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.savedExercisesRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        adapter = new ExerciseAdapter(exercises);
+        adapter = new ExerciseAdapter(exercises, false); // false to disable selection mode
+        adapter.setOnItemClickListener(exerciseModel -> {
+            // Handle click
+        });
         recyclerView.setAdapter(adapter);
 
         // Correct usage of intent within the click listener
@@ -61,16 +64,16 @@ public class SavedExercisesActivity extends AppCompatActivity {
         loadSavedExercises();
 
 
-    // Button for navigating to CalendarActivity
+        // Button for navigating to CalendarActivity
         Button calendarButton = findViewById(R.id.calendarButton);
         calendarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SavedExercisesActivity.this, MyCalendarActivity.class);
+                Intent intent = new Intent(SavedExercisesActivity.this, CalendarScreen.class);
                 startActivity(intent);
             }
         });
-}
+    }
     private void loadSavedExercises() {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Registered Users")
                 .child(userId)

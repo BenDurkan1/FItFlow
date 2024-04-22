@@ -132,7 +132,7 @@ public class Fitness2 extends AppCompatActivity {
 
     private void showTimerDisabledMessage() {
         startBtn.setEnabled(false);
-        Toast.makeText(this, "Timer cannot start because this is not accessed from SavedActivity.", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Timer cannot begin on this page please see Saved Exercises.", Toast.LENGTH_LONG).show();
     }
 
 

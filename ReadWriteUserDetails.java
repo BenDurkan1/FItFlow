@@ -4,7 +4,22 @@ public class ReadWriteUserDetails {
     public String fullName;
     public String doB;
     public String gender;
+    public String phone;
+    public String weight;
+    public String imageUrl; // URL to the image stored in Firebase Storage
 
+    public ReadWriteUserDetails() {}
+
+    public ReadWriteUserDetails(String fullName, String doB, String gender, String phone, String weight, String imageUrl) {
+        this.fullName = fullName;
+        this.doB = doB;
+        this.gender = gender;
+        this.phone = phone;
+        this.weight = weight;
+        this.imageUrl = imageUrl; // Initialize imageUrl
+    }
+
+    // Getters and setters
     public String getFullName() {
         return fullName;
     }
@@ -45,17 +60,11 @@ public class ReadWriteUserDetails {
         this.weight = weight;
     }
 
-    public String phone;
-    public String weight;
+    public String getImageUrl() {
+        return imageUrl;
+    }
 
-    public ReadWriteUserDetails(){};
-
-    public ReadWriteUserDetails(String namet,String dobt,String textGender, String phonet, String weight ){
-
-        this.fullName = namet;
-        this.doB = dobt;
-        this.gender = textGender;
-        this.phone = phonet;
-        this.weight = weight;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }
