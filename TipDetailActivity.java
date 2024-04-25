@@ -26,7 +26,6 @@ public class TipDetailActivity extends AppCompatActivity {
     private void generateCategoryButtons(String category) {
         String[] subCategories;
 
-        // Define subcategories based on the category
         if (category.equals("Nutrition & Healthy Eating")) {
             subCategories = new String[]{"Carbs: Essential for energy, focus on whole grains.", "Proteins: Vital for muscle repair, include varied sources.", "Fats: Important for brain health, choose healthy sources."};
         } else if (category.equals("Injury Prevention and Recovery")) {
@@ -45,11 +44,10 @@ public class TipDetailActivity extends AppCompatActivity {
             subCategories = new String[]{};
         }
 
-        // Create buttons for each subcategory
-        layout.removeAllViews(); // Clear previous buttons if any
+        layout.removeAllViews();
         for (String subCategory : subCategories) {
             Button button = new Button(this);
-            button.setText(subCategory.split(":")[0]); // Get the title part before the colon
+            button.setText(subCategory.split(":")[0]);
             button.setOnClickListener(v -> showDetails(subCategory));
             layout.addView(button, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
         }
@@ -57,7 +55,6 @@ public class TipDetailActivity extends AppCompatActivity {
 
 
     private void showDetails(String subCategory) {
-        // Display the details of the subcategory
-        detailView.setText(subCategory.split(":")[1]); // Get the detail part after the colon
+        detailView.setText(subCategory.split(":")[1]);
     }
 }

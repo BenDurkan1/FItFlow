@@ -28,7 +28,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -50,7 +49,6 @@ public class EditActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editprofile);
 
-        // Initialize views
         imageViewProfile = findViewById(R.id.imageViewProfile);
         editTextFullName = findViewById(R.id.editTextFullName);
         editTextEmail = findViewById(R.id.editTextEmail);
@@ -64,7 +62,6 @@ public class EditActivity extends AppCompatActivity {
         user = FirebaseAuth.getInstance().getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference("Registered Users");
 
-        // Load user data from intent extras
         loadUserData();
         loadImage();
 
@@ -121,7 +118,6 @@ public class EditActivity extends AppCompatActivity {
                         DatabaseReference userRef = databaseReference.child(user.getUid());
                         userRef.child("profileImageUrl").setValue(imageUrl)
                                 .addOnSuccessListener(aVoid -> {
-                                    Toast.makeText(EditActivity.this, "Image Uploaded Successfully", Toast.LENGTH_SHORT).show();
                                     imageViewProfile.setImageURI(imageUri); // Set image in ImageView after successful upload
                                 })
                                 .addOnFailureListener(e -> Log.e("EditActivity", "Failed to save image URL to DB", e));
@@ -134,16 +130,18 @@ public class EditActivity extends AppCompatActivity {
     }
 
     private void showDatePickerDialog() {
-        final Calendar calendar = Calendar.getInstance();
-        int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH);
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        String dobText = textViewDOB.getText().toString();
+        String[] parts = dobText.split("/");
+        int day = Integer.parseInt(parts[0]);
+        int month = Integer.parseInt(parts[1]) - 1;
+        int year = Integer.parseInt(parts[2]);
 
         datePickerDialog = new DatePickerDialog(EditActivity.this,
-                (view, year1, monthOfYear, dayOfMonth) -> textViewDOB.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year),
+                (view, year1, monthOfYear, dayOfMonth) -> textViewDOB.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year1),
                 year, month, day);
         datePickerDialog.show();
     }
+
 
     private void showGenderSelectionDialog() {
         final String[] genders = {"Male", "Female", "Other"};

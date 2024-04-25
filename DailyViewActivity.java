@@ -2,9 +2,7 @@ package com.example.FitFlow;
 
 import static com.example.FitFlow.Other.CalendarUtils.selectedDate;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -15,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.FitFlow.Other.CalendarUtils;
 import com.example.FitFlow.Other.HourEvent;
-import com.example.FitFlow.adapters.HourAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -28,7 +25,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.time.LocalDate;
 import java.time.format.TextStyle;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Locale;
 
 public class DailyViewActivity extends AppCompatActivity {
@@ -42,14 +38,9 @@ public class DailyViewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily_view);
-
-        LocalDate passedDate = LocalDate.now(); // Default to today
-        Bundle extras = getIntent().getExtras();
-        if (extras != null && extras.containsKey(SELECTED_DATE_KEY)) {
-            String dateString = extras.getString(SELECTED_DATE_KEY);
-            passedDate = LocalDate.parse(dateString); // Parse the passed date string back into LocalDate
-        }
-        CalendarUtils.selectedDate = passedDate;
+        LocalDate passedDate = getIntent().hasExtra("SELECTED_DATE") ?
+                LocalDate.parse(getIntent().getStringExtra("SELECTED_DATE")) : LocalDate.now();
+        CalendarUtils.selectedDate = passedDate; // Consider using a local variable instead
 
         initializeViews();
         updateDayView();
@@ -66,7 +57,7 @@ public class DailyViewActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        updateDayView();  // This will refresh the events displayed
+        updateDayView();
     }
     private void initializeViews() {
         dateTitleText = findViewById(R.id.monthDayText);
@@ -104,16 +95,8 @@ public class DailyViewActivity extends AppCompatActivity {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Event event = snapshot.getValue(Event.class);
                     if (event != null) {
-                        hourlyEvents.add(new HourEvent(event.getTime(), new ArrayList<>(Collections.singletonList(event))));
                     }
                 }
-                if (hourlyEvents.isEmpty()) {
-                    Log.d("DailyViewActivity", "No events found for selected date");
-                } else {
-                    Log.d("DailyViewActivity", "Events found: " + hourlyEvents.size());
-                }
-                HourAdapter hourAdapter = new HourAdapter(DailyViewActivity.this, hourlyEvents);
-                hoursListView.setAdapter(hourAdapter);
             }
 
             @Override
@@ -122,7 +105,6 @@ public class DailyViewActivity extends AppCompatActivity {
             }
         });
     }
-
     public void navigateToPreviousDay(View view) {
         selectedDate = selectedDate.minusDays(1);
         updateDayView();
@@ -133,7 +115,5 @@ public class DailyViewActivity extends AppCompatActivity {
         updateDayView();
     }
 
-    public void createNewEvent(View view) {
-        startActivity(new Intent(this, EventActivity.class));
-    }
+
 }

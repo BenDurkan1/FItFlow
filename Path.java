@@ -60,10 +60,8 @@ public class Path extends AppCompatActivity {
                     startActivity(new Intent(Path.this, Path.class));
                 }
 
-                // Close the drawer when an item is selected
                 drawerLayout.closeDrawer(GravityCompat.START);
 
-                // Return true to indicate that the item has been handled
                 return true;
             }
 
@@ -77,7 +75,7 @@ public class Path extends AppCompatActivity {
         exercise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Path.this, FitnessActivity.class); // Make sure FitnessActivity.class is specified here
+                Intent intent = new Intent(Path.this, FitnessActivity.class);
                 startActivity(intent);
             }
         });

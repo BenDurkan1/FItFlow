@@ -46,15 +46,13 @@ public class Profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        // Initialize UI Components
         initializeUIComponents();
 
-        // Firebase Authentication
         authProfile = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = authProfile.getCurrentUser();
 
         if (firebaseUser == null) {
-            Toast.makeText(Profile.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+         //   Toast.makeText(Profile.this, "Something went wrong", Toast.LENGTH_SHORT).show();
         } else {
             progressBar.setVisibility(View.VISIBLE);
             showUser(firebaseUser);
@@ -112,7 +110,7 @@ public class Profile extends AppCompatActivity {
         if (intent != null) {
             fullName = intent.getStringExtra("fullName");
             email = intent.getStringExtra("email");
-            doB = intent.getStringExtra("dob");
+            doB = intent.getStringExtra("doB");
             gender = intent.getStringExtra("gender");
             mobile = intent.getStringExtra("mobile");
             weight = intent.getStringExtra("weight");
@@ -150,7 +148,7 @@ public class Profile extends AppCompatActivity {
                     weight = readUserDetails.weight;
                      imageUrl = snapshot.child("profileImageUrl").getValue(String.class);
 
-                    Log.d("ProfileActivity", "Image URL: " + imageUrl); // Debug log
+                    Log.d("ProfileActivity", "Image URL: " + imageUrl);
 
                     tWelcome.setText("Welcome " + fullName);
                     tFullName.setText(fullName);
@@ -160,7 +158,7 @@ public class Profile extends AppCompatActivity {
                     tPhone.setText(mobile);
                     tWeight.setText(weight);
 
-                    if (imageView_profile_dp != null) { // Check if imageView is not null
+                    if (imageView_profile_dp != null) {
                         if (imageUrl != null && !imageUrl.isEmpty()) {
                             Glide.with(Profile.this)
                                     .load(imageUrl)
@@ -172,7 +170,7 @@ public class Profile extends AppCompatActivity {
                             imageView_profile_dp.setImageResource(R.drawable.ic_baseline_person_2_24);
                         }
                     } else {
-                        Log.e("ProfileActivity", "ImageView is null");
+                    //    Log.e("ProfileActivity", "ImageView is null");
                     }
                 } else {
                     Toast.makeText(Profile.this, "User data is empty.", Toast.LENGTH_SHORT).show();
@@ -204,7 +202,7 @@ public class Profile extends AppCompatActivity {
             intent.putExtra("gender", gender);
             intent.putExtra("mobile", mobile);
             intent.putExtra("weight", weight);
-            intent.putExtra("profileImageUrl", imageUrl); // Use the field variable
+            intent.putExtra("profileImageUrl", imageUrl);
 
             startActivity(intent);
         });

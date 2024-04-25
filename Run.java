@@ -8,7 +8,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.Objects;
 
 public class Run {
-    private String imgBase64; // Use a base64-encoded string representation of the Bitmap
+    private String imgBase64;
     private long timestamp;
     private float avgSpeedInKMH;
     private int distanceInMeters;
@@ -17,7 +17,6 @@ public class Run {
     private String id;
 
     public Run() {
-        // Default constructor required for calls to DataSnapshot.getValue(Run.class)
     }
 
     public Run(Bitmap img, long timestamp, float avgSpeedInKMH, int distanceInMeters, long timeInMillis, int caloriesBurned) {
@@ -65,7 +64,6 @@ public class Run {
         this.id = id;
     }
 
-    // Helper method to convert Bitmap to base64
     private String convertBitmapToBase64(Bitmap bitmap) {
         if (bitmap == null) {
             throw new IllegalArgumentException("Input Bitmap cannot be null");
@@ -76,7 +74,6 @@ public class Run {
         return Base64.encodeToString(byteArray, Base64.DEFAULT);
     }
 
-    // Helper method to convert base64 to Bitmap
     private Bitmap convertBase64ToBitmap(String base64String) {
         if (base64String == null || base64String.isEmpty()) {
             throw new IllegalArgumentException("Input Base64 string cannot be null or empty");
@@ -92,7 +89,6 @@ public class Run {
 
         Run otherRun = (Run) obj;
 
-        // Compare fields for equality
         return this.id.equals(otherRun.id)
                 && this.timestamp == otherRun.timestamp
                 && Float.compare(this.avgSpeedInKMH, otherRun.avgSpeedInKMH) == 0

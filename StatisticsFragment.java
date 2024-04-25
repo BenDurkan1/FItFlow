@@ -35,7 +35,6 @@ import dagger.hilt.android.AndroidEntryPoint;
 public class StatisticsFragment extends Fragment {
 
     private StatisticsViewModel viewModel;
-    // TextViews
     private MaterialTextView tvTotalDistanceInfo;
     private MaterialTextView tvTotalDistance;
     private MaterialTextView tvTotalTimeInfo;
@@ -45,17 +44,15 @@ public class StatisticsFragment extends Fragment {
     private MaterialTextView tvAverageSpeedInfo;
     private MaterialTextView tvAverageSpeed;
 
-    // Guidelines
     private View guideline;
     private View guideline2;
 
-    // Chart
     private BarChart barChart;
 
 
-    public StatisticsFragment() {
+  /* public StatisticsFragment() {
         super(R.layout.fragment_statistics);
-    }
+    } */
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -66,10 +63,8 @@ public class StatisticsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Initialize ViewModel
         viewModel = new ViewModelProvider(this).get(StatisticsViewModel.class);
 
-        // Initialize TextViews
         tvTotalDistanceInfo = view.findViewById(R.id.tvTotalDistanceInfo);
         tvTotalDistance = view.findViewById(R.id.tvTotalDistance);
         tvTotalTimeInfo = view.findViewById(R.id.tvTotalTimeInfo);
@@ -79,18 +74,14 @@ public class StatisticsFragment extends Fragment {
         tvAverageSpeedInfo = view.findViewById(R.id.tvAverageSpeedInfo);
         tvAverageSpeed = view.findViewById(R.id.tvAverageSpeed);
 
-        // Initialize Guidelines
         guideline = view.findViewById(R.id.guideline);
         guideline2 = view.findViewById(R.id.guideline2);
 
-        // Initialize Chart
         barChart = view.findViewById(R.id.barChart);
 
 
-        // Your StatsFragment code...
 
 
-        // Subscribe to observers in StatisticsViewModel
         subscribeToObservers();
         setupBarChart();
 

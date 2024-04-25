@@ -28,6 +28,7 @@ import com.example.FitFlow.Run;
 import com.example.FitFlow.adapters.RunAdapter;
 import com.example.FitFlow.repository.UI.ViewModels.MainViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.List;
 
@@ -47,7 +48,7 @@ public class RunFragment extends Fragment implements EasyPermissions.PermissionC
     public RunFragment() {
         super();
     }
-     SortType sortType = SortType.DATE;
+    SortType sortType = SortType.DATE;
 
 
     @Override
@@ -58,6 +59,10 @@ public class RunFragment extends Fragment implements EasyPermissions.PermissionC
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        if (FirebaseAuth.getInstance().getCurrentUser() == null) {
+            Toast.makeText(getContext(), "Please log in to view runs", Toast.LENGTH_LONG).show();
+            return;
+        }
         viewModel = new ViewModelProvider(this).get(MainViewModel.class);
 
         FloatingActionButton fab = view.findViewById(R.id.fab);

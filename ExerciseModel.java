@@ -4,30 +4,55 @@ import java.io.Serializable;
 import java.util.UUID;
 
 public class ExerciseModel implements Serializable {
-    private String id; // Added ID field
+    private String id;
+    private String firebaseKey;
+
     private String name;
-    private String time;
+    private long time;
     private String instructions;
     private String benefits;
     private String lottieFile;
-    private String day;
+    private String scheduledDate;
     private String scheduledTime;
 
-    // Constructor
-    // No-argument constructor
+
+
     public ExerciseModel() {
     }
 
-    public ExerciseModel(String name, String time, String instructions, String benefits, String lottieFile, String day, String scheduledTime) {
+  /*  public void setTime(long time) {
+        this.time = time;
+    } */
+
+    public String getScheduledDate() {
+        return scheduledDate;
+    }
+
+    public void setScheduledDate(String scheduledDate) {
+        this.scheduledDate = scheduledDate;
+    }
+
+    public String getScheduledTime() {
+        return scheduledTime;
+    }
+
+    public void setScheduledTime(String scheduledTime) {
+        this.scheduledTime = scheduledTime;
+    }
+    public ExerciseModel(String name, long time, String instructions, String benefits, String lottieFile) {
+        this(name, time, instructions, benefits, lottieFile, null, null); // Call the main constructor with nulls for date and time
+    }
+
+
+    public ExerciseModel(String name, long time, String instructions, String benefits, String lottieFile, String scheduledDate, String scheduledTime) {
+        this.id = UUID.randomUUID().toString();
         this.name = name;
         this.time = time;
         this.instructions = instructions;
         this.benefits = benefits;
         this.lottieFile = lottieFile;
-        this.day = day;
+        this.scheduledDate = scheduledDate;
         this.scheduledTime = scheduledTime;
-        // Generate or set the ID as needed, e.g., using UUID.randomUUID().toString()
-        this.id = UUID.randomUUID().toString(); // Example of generating a unique ID
     }
 
     // Getters and setters
@@ -47,13 +72,24 @@ public class ExerciseModel implements Serializable {
         this.name = name;
     }
 
-    public String getTime() {
+    public long getTime() {
         return time;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+ public void setTime(Object time) {
+        if (time instanceof Long) {
+            this.time = (Long) time;
+        } else if (time instanceof String) {
+            try {
+                this.time = Long.parseLong((String) time);
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException("Time is not a valid number", e);
+            }
+        } else {
+            throw new IllegalArgumentException("Invalid type for time: " + time.getClass().getName());
+        }
     }
+
 
     public String getInstructions() {
         return instructions;
@@ -78,20 +114,13 @@ public class ExerciseModel implements Serializable {
     public void setLottieFile(String lottieFile) {
         this.lottieFile = lottieFile;
     }
-
-    public String getDay() {
-        return day;
+    public String getFirebaseKey() {
+        return firebaseKey;
     }
 
-    public void setDay(String day) {
-        this.day = day;
+    public void setFirebaseKey(String firebaseKey) {
+        this.firebaseKey = firebaseKey;
     }
 
-    public String getScheduledTime() {
-        return scheduledTime;
-    }
 
-    public void setScheduledTime(String scheduledTime) {
-        this.scheduledTime = scheduledTime;
-    }
 }

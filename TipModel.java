@@ -4,7 +4,6 @@ public class TipModel {
     private String title;
     private String detail;
 
-    // Default constructor is required for Firebase
     public TipModel() {
     }
 

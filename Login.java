@@ -57,7 +57,6 @@ public class Login extends AppCompatActivity {
         });
 
 
-        //Login user
         Button buttonLogin = findViewById(R.id.login_btn);
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,19 +94,16 @@ public class Login extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    // get user
                     FirebaseUser firebaseUser = authProfile.getCurrentUser();
 
-                    //Check if email is verified before user can access
                     if (firebaseUser.isEmailVerified()) {
-                        Toast.makeText(Login.this, "User has logged in successfully", Toast.LENGTH_SHORT).show();
+                     //   Toast.makeText(Login.this, "User has logged in successfully", Toast.LENGTH_SHORT).show();
 
-                        // Open User Profile
                         Intent intent = new Intent(Login.this, Profile.class);
                         startActivity(intent);
                     } else {
                         firebaseUser.sendEmailVerification();
-                        authProfile.signOut(); //Sign out User
+                        authProfile.signOut();
                         showAlertDialog();
                     }
                 } else {
@@ -132,23 +128,20 @@ public class Login extends AppCompatActivity {
     }
 
     private void showAlertDialog() {
-        //Alert Builder
         AlertDialog.Builder builder = new AlertDialog.Builder(Login.this);
         builder.setTitle("Email not verified");
         builder.setMessage("Verification email sent");
 
-        //Open Email Apps if user clicks continue button
         builder.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Intent intent = new Intent(Intent.ACTION_MAIN);
                 intent.addCategory(Intent.CATEGORY_APP_EMAIL);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);// EMAIL app in new window
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
         });
 
-        //Create the AlertDialog
         AlertDialog alertDialog = builder.create();
 
         alertDialog.show();
@@ -158,7 +151,6 @@ public class Login extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        // Show a message indicating that the user can now log in
         Toast.makeText(Login.this, "You can now Login", Toast.LENGTH_SHORT).show();
     }
 }

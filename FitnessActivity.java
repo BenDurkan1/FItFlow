@@ -17,42 +17,34 @@ public class FitnessActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fitness);
 
-// Initialize the LottieAnimationView instances
         LottieAnimationView exerciseAnim = findViewById(R.id.ExerciseAnim);
         LottieAnimationView exerciseAdd = findViewById(R.id.ExerciseAdd);
         LottieAnimationView exerciseAdd3 = findViewById(R.id.ExerciseAdd3);
         LottieAnimationView exerciseAdd4 = findViewById(R.id.ExerciseAdd4);
 
 
-        // The URL of the Lottie animation
         String lottieUrl = "https://lottie.host/6a94a05a-be15-4b89-81ee-c9f0f4a67dd7/0aHcu7T8Qo.lottie";
 
-        // Set the animation URL for each LottieAnimationView
         exerciseAnim.setAnimationFromUrl(lottieUrl);
         exerciseAdd.setAnimationFromUrl(lottieUrl);
         exerciseAdd3.setAnimationFromUrl(lottieUrl);
         exerciseAdd4.setAnimationFromUrl(lottieUrl);
 
 
-        // First button
         Button button1 = findViewById(R.id.my_button);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Handle button 1 click
-                Toast.makeText(FitnessActivity.this, "Button 1 clicked", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(FitnessActivity.this, "Button 1 clicked", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(FitnessActivity.this, Fitness1.class);
                 startActivity(intent);
             }
         });
 
-        // Second button
         Button button2 = findViewById(R.id.my_button2);
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Handle button 2 click
-                Toast.makeText(FitnessActivity.this, "Button 2 clicked", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(FitnessActivity.this, Fitness2.class);
                 startActivity(intent);
             }

@@ -1,16 +1,25 @@
 package com.example.FitFlow;
 
 public class StepCount {
+    private String id;
     private String date;
     private int stepCount;
 
     public StepCount() {
-        // Default constructor required for calls to DataSnapshot.getValue(StepCount.class)
     }
 
-    public StepCount(String date, int stepCount) {
+    public StepCount(String id, String date, int stepCount) {
+        this.id = id;
         this.date = date;
         this.stepCount = stepCount;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getDate() {

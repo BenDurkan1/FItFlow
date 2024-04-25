@@ -6,7 +6,7 @@ public class ReadWriteUserDetails {
     public String gender;
     public String phone;
     public String weight;
-    public String imageUrl; // URL to the image stored in Firebase Storage
+    public String imageUrl;
 
     public ReadWriteUserDetails() {}
 
@@ -16,7 +16,7 @@ public class ReadWriteUserDetails {
         this.gender = gender;
         this.phone = phone;
         this.weight = weight;
-        this.imageUrl = imageUrl; // Initialize imageUrl
+        this.imageUrl = imageUrl;
     }
 
     // Getters and setters

@@ -49,12 +49,10 @@ public class Event {
         this.name = name;
     }
 
-    // Update the date field to use LocalDate
     public LocalDate getDate() {
         return date;
     }
 
-    // Update the date field to use LocalDate
     public void setDate(LocalDate date) {
         this.date = date;
     }
