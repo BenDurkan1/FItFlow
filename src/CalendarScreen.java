@@ -29,7 +29,6 @@ public class CalendarScreen extends AppCompatActivity implements DateGridAdapter
         setContentView(R.layout.calendar_view);
         initializeUI();
 
-        // Check if there's a saved state and use it to set currentDate
         if (savedInstanceState != null && savedInstanceState.containsKey("currentDate")) {
             currentDate = LocalDate.parse(savedInstanceState.getString("currentDate"));
         } else {
@@ -72,7 +71,6 @@ public class CalendarScreen extends AppCompatActivity implements DateGridAdapter
 
     public void navigateToWeeklyView(View view) {
         Intent intent = new Intent(this, WeekViewActivity.class);
-        // Pass the selected date to the WeekViewActivity
         intent.putExtra("SELECTED_DATE", currentDate.toString());
         startActivity(intent);
     }
