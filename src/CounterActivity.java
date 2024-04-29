@@ -30,7 +30,7 @@ import java.util.Locale;
 public class CounterActivity extends AppCompatActivity {
 
     private static final String STEP_COUNT_KEY = "step_count";
-    private static final int GOAL_STEP_COUNT = 10000; // Define your goal step count here
+    private static final int GOAL_STEP_COUNT = 10000; 
 
     private ProgressBar progressBar;
     private SensorManager sensorManager;
@@ -40,7 +40,7 @@ public class CounterActivity extends AppCompatActivity {
     private double magnitudePrevious = 0;
     private Button buttonStartStop, overallSteps;
 
-    // Firebase
+   
     private DatabaseReference mDatabase;
     private ValueEventListener stepCountListener;
     private boolean countingEnabled = false;
@@ -50,7 +50,7 @@ public class CounterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_counter);
 
-        // Initialize Firebase Database reference
+      
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Registered Users");
 
         // Initialize UI components
@@ -71,7 +71,7 @@ public class CounterActivity extends AppCompatActivity {
         });
 
 
-        // Restore step count if available
+ 
         if (savedInstanceState != null) {
             stepCount = savedInstanceState.getInt(STEP_COUNT_KEY);
             steps.setText(String.valueOf(stepCount));
@@ -84,7 +84,6 @@ public class CounterActivity extends AppCompatActivity {
             }
         });
 
-        // Retrieve step count from Firebase Realtime Database when activity is created
         retrieveStepCountFromDatabase();
     }
 
@@ -124,15 +123,14 @@ public class CounterActivity extends AppCompatActivity {
                 if (magnitudeDelta > 6) {
                     stepCount++;
                     steps.setText(String.valueOf(stepCount));
-                    updateProgressBar(); // Update progress bar when step count changes
-                    saveStepCountToDatabase(); // Save step count to Firebase Database
+                    updateProgressBar(); 
+                    saveStepCountToDatabase();
                 }
             }
         }
 
         @Override
         public void onAccuracyChanged(Sensor sensor, int accuracy) {
-            // Not used in this implementation
         }
     };
 
@@ -146,13 +144,12 @@ public class CounterActivity extends AppCompatActivity {
                     if (snapshot.exists()) {
                         stepCount = snapshot.getValue(Integer.class);
                         steps.setText(String.valueOf(stepCount));
-                        updateProgressBar(); // Update progress bar when step count changes
+                        updateProgressBar(); 
                     }
                 }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    // Handle database error
                 }
             });
         }
@@ -176,21 +173,18 @@ public class CounterActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        // Save the current step count when the activity is paused
         outState.putInt(STEP_COUNT_KEY, stepCount);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        // Retrieve step count from Firebase Realtime Database when activity is resumed
         retrieveStepCountFromDatabase();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        // Remove ValueEventListener to avoid memory leaks
         if (stepCountListener != null) {
             FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
             if (firebaseUser != null) {
