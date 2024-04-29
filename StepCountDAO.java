@@ -22,13 +22,11 @@ public class StepCountDAO {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             String userId = user.getUid();
-            // Use the date as the key for each step count entry
             databaseReference.child(userId).child("stepCounts").child(stepCount.getDate()).setValue(stepCount.getStepCount());
         }
     }
 
-    // Add methods for retrieving and updating step counts as needed
-    // Inside StepCountDAO class
+   
     public interface DataStatus {
         void DataIsLoaded(List<StepCount> stepCounts, List<String> keys);
         void DataIsInserted();
@@ -56,7 +54,6 @@ public class StepCountDAO {
 
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
-                    // Handle possible errors
                 }
             });
         }
