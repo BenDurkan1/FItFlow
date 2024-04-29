@@ -23,7 +23,7 @@ public class StepTrackerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_step_tracker);
 
         lineChart = findViewById(R.id.lineChart);
-        stepCountDAO = new StepCountDAO(); // Initialize your DAO
+        stepCountDAO = new StepCountDAO();
 
         loadStepData();
     }
@@ -34,8 +34,7 @@ public class StepTrackerActivity extends AppCompatActivity {
             public void DataIsLoaded(List<StepCount> stepCounts, List<String> keys) {
                 List<Entry> entries = new ArrayList<>();
                 for (StepCount stepCount : stepCounts) {
-                    // Assuming you have a method in StepCount to convert date to a numeric representation or order
-                    // Here, just using the size of entries as an x-value for simplicity
+                   
                     entries.add(new Entry(entries.size(), stepCount.getStepCount()));
                 }
                 updateChart(entries);
@@ -43,17 +42,14 @@ public class StepTrackerActivity extends AppCompatActivity {
 
             @Override
             public void DataIsInserted() {
-                // Not needed for loading data
             }
 
             @Override
             public void DataIsUpdated() {
-                // Not needed for loading data
             }
 
             @Override
             public void DataIsDeleted() {
-                // Not needed for loading data
             }
         });
     }
