@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/home"
+            android:icon="@drawable/baseline_person_2_24"
+            android:title="Profile"/>
+
+        <item
+            android:id="@+id/runs"
+            android:icon="@drawable/icons8_run_48"
+            android:title="Runs"/>
+        <item
+            android:id="@+id/fitness"
+            android:icon="@drawable/icons8_home_workout_48"
+            android:title="Home workouts"/>
+
+        <item
+            android:id="@+id/log_out"
+            android:title="Log Out"/>
+    </group>
+</menu>
