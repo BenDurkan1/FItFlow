@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Food">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <Button
+            android:id="@+id/btnNutrition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nutrition and Healthy Eating"
+            android:backgroundTint="@color/lightBlue"
+            android:layout_marginBottom="8dp"/>
+
+        <Button
+            android:id="@+id/btnInjuryPrevention"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Injury Prevention and Recovery"
+            android:backgroundTint="@color/lightBlue"
+            android:layout_marginBottom="8dp"/>
+
+        <Button
+            android:id="@+id/btnGoalSetting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Motivation and Goal Setting"
+            android:backgroundTint="@color/lightBlue"
+            android:layout_marginBottom="8dp"/>
+
+        <Button
+            android:id="@+id/btnFitnessMyths"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fitness Myths"
+            android:backgroundTint="@color/lightBlue"
+            android:layout_marginBottom="8dp"/>
+
+        <Button
+            android:id="@+id/btnExerciseForm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Exercise Form and Technique"
+            android:backgroundTint="@color/lightBlue"
+            android:layout_marginBottom="8dp"/>
+
+        <Button
+            android:id="@+id/btnMindfulness"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mindfulness and Stress Management"
+            android:backgroundTint="@color/lightBlue"
+            android:layout_marginBottom="8dp"/>
+
+        <Button
+            android:id="@+id/btnFitnessGoals"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fitness for Specific Goals"
+            android:backgroundTint="@color/lightBlue"
+            android:layout_marginBottom="8dp"/>
+
+    </LinearLayout>
+</ScrollView>

@@ -59,32 +59,9 @@
                 android:textSize="18sp"
                 android:layout_marginTop="30dp"
                 app:cornerRadius="20dp"/>
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/reg_googleBtn"
-                android:text="Google"
-                android:textSize="18sp"
-                android:layout_marginTop="30dp"
-                app:cornerRadius="20dp"/>
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/mapsBtn"
-                android:text="Maps"
-                android:textSize="18sp"
-                android:layout_marginTop="30dp"
-                app:cornerRadius="20dp"/>
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/fitness_btn"
-                android:text="Fitness"
-                android:textSize="18sp"
-                android:layout_marginTop="30dp"
-                app:cornerRadius="20dp"/>
+
 
 
 

@@ -1,118 +1,52 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:gravity="center"
-    android:orientation="vertical"
-    tools:context=".MainActivity"
-    >
+    android:id="@+id/drawer_layout">
 
-    <LinearLayout
+    <com.google.android.material.navigation.NavigationView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:headerLayout="@layout/header"
+        app:menu="@menu/main_menu"
+        android:id="@+id/nav_view"
+        android:layout_gravity="start"
+        style="@style/Widget.MaterialComponents.NavigationView" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/rootView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="center_horizontal"
-        android:padding="16dp">
+        android:layout_height="match_parent">
 
+        <fragment
+            android:id="@+id/navHostFrag"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/nav_graph" />
 
-        <TextView
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigationView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="FitFlow"
-            android:textColor="@color/lavender"
-            android:textSize="36sp"
-            android:textAlignment="center"
-            android:textStyle="bold"
-            />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Physical Details"
-            android:textSize="28sp"
-            android:textAlignment="center"
-            android:textStyle="bold"
-            android:textColor="@color/lavender"/>
+            android:layout_height="56dp"
+            app:menu="@menu/bottom_nav_menu"
+            app:itemIconTint="@drawable/nav_selector"
+            app:itemTextColor="@drawable/nav_selector"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            style="@style/Widget.MaterialComponents.NavigationView" />
 
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/weight"
-            android:background="@drawable/lavender_border"
-            android:layout_marginTop="20dp"
-            android:padding="8dp"
-            android:hint="Weight (in KG)"
-            android:drawablePadding="8dp"
-            android:textColor="@color/black" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/DOB"
-            android:layout_marginTop="10dp"
-        android:padding="8dp"
-        android:hint="Date of Birth"
-            android:background="@drawable/lavender_border"
-            android:drawablePadding="8dp"
-        android:textColor="@color/black" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/height"
-            android:background="@drawable/lavender_border"
-            android:layout_marginTop="10dp"
-        android:padding="8dp"
-        android:hint="Height (in CM)"
-        android:drawablePadding="8dp"
-        android:textColor="@color/black" />
-        <RadioGroup
-            android:id="@+id/radioGroupGender"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <RadioButton
-                android:id="@+id/radioMale"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Male"
-                />
-
-            <RadioButton
-                android:id="@+id/radioFemale"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Female"
-                />
-
-            <RadioButton
-                android:id="@+id/radioPreferNotToSay"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Prefer not to say"
-                />
-
-        </RadioGroup>
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/continue_btn"
-            android:text="Continue"
-            android:textSize="18sp"
-            android:layout_marginTop="30dp"
-          />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/redirect"
-            android:text="Completed Personal Details? Click Here"
-            android:layout_gravity="center"
-            android:padding="8dp"
-            android:layout_marginTop="10dp"
-            android:textSize="18sp"
-            android:textColor="@color/lavender"/>
-    </LinearLayout>
-</LinearLayout>
+</androidx.drawerlayout.widget.DrawerLayout>
