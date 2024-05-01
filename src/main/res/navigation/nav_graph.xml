@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/runFragment"> <!-- Set the start destination here -->
+
+    <action android:id="@+id/action_global_trackingFragment"
+        app:destination="@id/trackingFragment"
+        app:launchSingleTop="true" />
+
+    <fragment
+        android:id="@+id/runFragment"
+        android:name="com.example.FitFlow.repository.UI.fragments.RunFragment"
+        android:label="RunFragment" >
+        <action
+            android:id="@+id/action_runFragment_to_trackingFragment"
+            app:destination="@id/trackingFragment" />
+        <action
+            android:id="@+id/action_runFragment_to_statisticsFragment"
+            app:destination="@id/statsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/statsFragment"
+        android:name="com.example.FitFlow.repository.UI.fragments.StatisticsFragment"
+        android:label="StatisticsFragment" />
+
+    <fragment
+        android:id="@+id/trackingFragment"
+        android:name="com.example.FitFlow.repository.UI.fragments.TrackingFragment"
+        android:label="TrackingFragment" >
+        <action
+            android:id="@+id/action_trackingFragment_to_runFragment"
+            app:destination="@id/runFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.FitFlow.repository.UI.fragments.PathFragment"
+        android:label="SettingsFragment" />
+</navigation>
